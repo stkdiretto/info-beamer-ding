@@ -95,6 +95,7 @@ def parse(data, stop):
             more = more,
             stop = stop,
             delay = delay,
+            realtime = realtime,
         )))
     return departures
 
