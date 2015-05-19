@@ -51,6 +51,9 @@ function draw_departures(now, frame)
     local now = unixnow()
     font:write(0, 0, now, 30, 1,1,1,1)
     for idx, dep in ipairs(departures) do
+
+        local delay = dep.delay
+
         if dep.date > now then
             local time = dep.nice_date
 
@@ -59,63 +62,35 @@ function draw_departures(now, frame)
 
             if remaining < 0 then
                 time = "gone"
-            elseif remaining < 3 then
-                if frame == 1 then
-                    time = "now"
-                else
-                    time = "now"
-                end
-                if dep.next_date then
-                    append = string.format("next in %d min", math.floor((dep.next_date - now)/60))
-                end
+            elseif remaining < 1 then
+                time = "now"
             elseif remaining < 60 then
                 time = string.format("%d min", ((dep.date - now)/60))
-                if dep.next_nice_date then
-                    -- time = time .. " and again at " .. dep.next_nice_date
-                    append = "again " .. math.floor((dep.next_date - dep.date)/60) .. " min later"
-                end
-            else
-                time = time -- .. " +" .. remaining
-                if dep.next_nice_date then
-                    append = "again " .. dep.next_nice_date
-                end
             end
 
-            if #dep.platform > 0 then
-                if #append > 0 then
-                    append = append .. " / " .. dep.platform
-                else
-                    append = dep.platform
-                end
-            end
 
-            if remaining < 3 then
+            if remaining < 6 then
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+60, 0.9)
                 if frame == 1 then
-                    if #dep.more > 0 then
-                        font:write(150, y, dep.more, 60, 1,1,1,1)
-                    else
-                        font:write(150, y, dep.stop, 60, 1,1,1,1)
-                    end
+                    font:write(150, y, time, 60, 1,1,1,1)
                 else
-                    font:write(150, y, "->" .. dep.direction, 60, 1,1,1,1)
+                    font:write(150, y, dep.nice_date, 60, 1,1,1,1)
                 end
-                y = y + 60
---                font:write(150, y, time .. " / " .. append , 45, 1,1,1,1)
-                font:write(150, y, remaining .. " / " .. append , 45, 1,1,1,1)
+                font:write(340, y, dep.direction, 60, 1,1,1,1)
+--                if delay != "0" then
+                    y = y + 60
+                    font:write(150, y, delay .. " min delayed", 45, 1,1,1,1)
+--                end
                 y = y + 60
             else
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+45, 0.9)
-                font:write(150, y, time, 45, 1,1,1,1)
---                font:write(150, y, dep.date, 45, 1,1,1,1)
-                if frame == 1 and #dep.more > 0 then
-                    font:write(300, y, dep.more, 30, 1,1,1,1)
+                if frame == 1 then
+                    font:write(150, y, time, 45, 1,1,1,1)
                 else
-                    font:write(300, y, dep.stop .. " → " .. dep.direction, 30, 1,1,1,1)
+                    font:write(150,y, dep.nice_date, 45, 1,1,1,1)
                 end
-                y = y + 30
-                font:write(300, y, append , 25, 1,1,1,1)
-                y = y + 30
+                font:write(300, y, dep.direction, 45, 1,1,1,1)
+                y = y + 60
             end
             if y > HEIGHT - 120 then
                 break
