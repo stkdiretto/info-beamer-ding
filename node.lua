@@ -52,7 +52,6 @@ function draw_departures(now, frame)
     font:write(0, 0, now, 30, 1,1,1,1)
     for idx, dep in ipairs(departures) do
 
-        local delay = dep.delay
 
         if dep.date > now then
             local time = dep.nice_date
@@ -69,26 +68,41 @@ function draw_departures(now, frame)
             end
 
 
-            if remaining < 6 then
+            if remaining < 15 then
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+60, 0.9)
-                font:write(130, y, dep.direction, 60, 1,1,1,1)
+                font:write(120, y, dep.direction, 60, 1,1,1,1)
                 if frame == 1 then
                     font:write(800, y, time, 60, 1,1,1,1)
                 else
                     font:write(800, y, dep.nice_date, 60, 1,1,1,1)
+                    if dep.realtime == "1" then
+                        if dep.delay == "0" then
+                            font:write(950, y, "+" .. dep.delay, 60, 0,1,0,1)
+                        else
+                            font:write(950, y, "+" .. dep.delay, 60, 1,0,0,1)
+                        end
+                    end
                 end
 --                if delay != "0" then
-                    y = y + 60
-                    font:write(150, y, delay .. " min delayed", 45, 1,1,1,1)
+--                    y = y + 60
+--                    font:write(150, y, delay .. " min delayed", 45, 1,1,1,1)
 --                end
+                y = y + 20
                 y = y + 60
             else
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+45, 0.9)
-                font:write(130, y, dep.direction, 45, 1,1,1,1)
+                font:write(110, y, dep.direction, 45, 1,1,1,1)
                 if frame == 1 then
                     font:write(800, y, time, 45, 1,1,1,1)
                 else
                     font:write(800,y, dep.nice_date, 45, 1,1,1,1)
+                    if dep.realtime == "1" then
+                        if dep.delay == "0" then
+                            font:write(920,y, "+" .. dep.delay, 45, 0,1,0,1)
+                        else
+                            font:write(920,y, "+" .. dep.delay, 45, 1,0,0,1)
+                        end
+                    end
                 end
                 y = y + 60
             end
