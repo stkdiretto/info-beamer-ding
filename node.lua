@@ -71,12 +71,12 @@ function draw_departures(now, frame)
 
             if remaining < 6 then
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+60, 0.9)
+                font:write(130, y, dep.direction, 60, 1,1,1,1)
                 if frame == 1 then
-                    font:write(150, y, time, 60, 1,1,1,1)
+                    font:write(800, y, time, 60, 1,1,1,1)
                 else
-                    font:write(150, y, dep.nice_date, 60, 1,1,1,1)
+                    font:write(800, y, dep.nice_date, 60, 1,1,1,1)
                 end
-                font:write(340, y, dep.direction, 60, 1,1,1,1)
 --                if delay != "0" then
                     y = y + 60
                     font:write(150, y, delay .. " min delayed", 45, 1,1,1,1)
@@ -84,12 +84,12 @@ function draw_departures(now, frame)
                 y = y + 60
             else
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+45, 0.9)
+                font:write(130, y, dep.direction, 45, 1,1,1,1)
                 if frame == 1 then
-                    font:write(150, y, time, 45, 1,1,1,1)
+                    font:write(800, y, time, 45, 1,1,1,1)
                 else
-                    font:write(150,y, dep.nice_date, 45, 1,1,1,1)
+                    font:write(800,y, dep.nice_date, 45, 1,1,1,1)
                 end
-                font:write(300, y, dep.direction, 45, 1,1,1,1)
                 y = y + 60
             end
             if y > HEIGHT - 120 then
