@@ -55,12 +55,14 @@ function draw_departures(now, frame)
         if (dep.date > now or dep.rdate > now) then
 
 --            if dep.realtime == "1" then
-                local remaining = math.floor((dep.rdate - now) / 60)
+                local remtime = ((dep.rdate - now) / 60)
+--                local remaining = math.floor((dep.rdate - now) / 60)
 --            else
-                local time = dep.nice_date
+                local remtime = ((dep.date - now) / 60)
 --                local remaining = math.floor((dep.date - now) / 60)
 --            end
-
+            
+            local remaining = math.floor(remtime)
             local time = dep.nice_date
 
 
@@ -69,7 +71,8 @@ function draw_departures(now, frame)
             elseif remaining < 1 then
                 time = "now"
             elseif remaining < 60 then
-                time = string.format("%d min", ((dep.date - now)/60))
+--                time = string.format("%d min", ((dep.date - now)/60))
+                time = string.format("%d min", remtime)
             end
 
 
@@ -85,6 +88,7 @@ function draw_departures(now, frame)
                             font:write(950, y, "+" .. dep.delay, 60, 0,1,0,1)
                         else
                             font:write(950, y, "+" .. dep.delay, 60, 1,0,0,1)
+--                             font:write(400, y, "+" .. dep.delay .. " " .. dep.rdate, 50, 1,0,0,1)
                         end
                     end
                 end
@@ -106,6 +110,7 @@ function draw_departures(now, frame)
                             font:write(920,y, "+" .. dep.delay, 45, 0,1,0,1)
                         else
                             font:write(920,y, "+" .. dep.delay, 45, 1,0,0,1)
+--                             font:write(400,y, "+" .. dep.delay .. " " .. dep.rdate, 45, 1,0,0,1)
                         end
                     end
                 end
