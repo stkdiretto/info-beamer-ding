@@ -52,12 +52,17 @@ function draw_departures(now, frame)
     font:write(0, 0, now, 30, 1,1,1,1)
     for idx, dep in ipairs(departures) do
 
+        if (dep.date > now or dep.rdate > now) then
 
-        if dep.date > now then
+--            if dep.realtime == "1" then
+                local remaining = math.floor((dep.rdate - now) / 60)
+--            else
+                local time = dep.nice_date
+--                local remaining = math.floor((dep.date - now) / 60)
+--            end
+
             local time = dep.nice_date
 
-            local remaining = math.floor((dep.date - now) / 60)
-            local append = ""
 
             if remaining < 0 then
                 time = "gone"
@@ -68,7 +73,7 @@ function draw_departures(now, frame)
             end
 
 
-            if remaining < 15 then
+            if remaining < 10 then
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+60, 0.9)
                 font:write(120, y, dep.direction, 60, 1,1,1,1)
                 if frame == 1 then
@@ -146,7 +151,7 @@ function make_schedule()
         if frame1 and frame2 then
             shader:use{
                 frame2 = frame2;
-                which = math.max(-1, math.min(1, -3 + math.sin(sys.now()) * 5.5)) * 0.5 + 0.5;
+                which = math.max(-1, math.min(1, -3 + math.sin(sys.now()) * 25.5)) * 0.5 + 0.5 ;
             }
             frame1:draw(0, 0, WIDTH, HEIGHT, 1)
             shader:deactivate()
