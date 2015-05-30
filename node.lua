@@ -49,7 +49,7 @@ shader = resource.create_shader[[
 function draw_departures(now, frame)
     local y = 23
     local now = unixnow()
-    font:write(0, 0, now, 30, 1,1,1,1)
+    font:write(0, 0, now, 30, 1,1,1,0.8)
     for idx, dep in ipairs(departures) do
 
         if (dep.date > now or dep.rdate > now) then
@@ -117,6 +117,8 @@ function draw_departures(now, frame)
                 y = y + 60
             end
             if y > HEIGHT - 120 then
+                font:write(50,y+10, "Universität Süd", 60, 1,1,1,1)
+                font:write(475,y+20, "Anlage im Probebetrieb.", 45, 1,0.2,0.2,1)
                 break
             end
         end

@@ -81,6 +81,8 @@ def parse(data, stop):
             rdate, rts = parse_rtdate(dep)
         else:
             delay = "0"
+            rdate = date
+            rts = ts
 
         direction = line.get('direction')
         # direction = direction.replace('Hamburg', 'HH')
