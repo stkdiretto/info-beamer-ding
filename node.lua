@@ -11,6 +11,9 @@ local departures = N.departures or {}
 
 local drawer
 
+
+
+
 util.data_mapper{
     ["clock/set"] = function(time)
         base_time = tonumber(time) - sys.now()
@@ -54,13 +57,8 @@ function draw_departures(now, frame)
 
         if (dep.date > now or dep.rdate > now) then
 
---            if dep.realtime == "1" then
-                local remtime = ((dep.rdate - now) / 60)
---                local remaining = math.floor((dep.rdate - now) / 60)
---            else
-                local remtime = ((dep.date - now) / 60)
---                local remaining = math.floor((dep.date - now) / 60)
---            end
+            local remtime = ((dep.date - now) / 60)
+            local remtime = ((dep.rdate - now) / 60)
             
             local remaining = math.floor(remtime)
             local time = dep.nice_date
@@ -116,9 +114,9 @@ function draw_departures(now, frame)
                 end
                 y = y + 60
             end
-            if y > HEIGHT - 120 then
-                font:write(50,y+10, "Universität Süd", 60, 1,1,1,1)
-                font:write(475,y+20, "Anlage im Probebetrieb.", 45, 1,0.2,0.2,1)
+            if y > HEIGHT - 150 then
+                font:write(10,715, "Kliniken Wissenschaftsstadt", 60, 1,1,1,1)
+                font:write(10,660, "Anlage im Probebetrieb. Kontakt: uulm.de/?mobil", 45, 1,0.2,0.2,1)
                 break
             end
         end
@@ -158,7 +156,7 @@ function make_schedule()
         if frame1 and frame2 then
             shader:use{
                 frame2 = frame2;
-                which = math.max(-1, math.min(1, -3 + math.sin(sys.now()) * 25.5)) * 0.5 + 0.5 ;
+                which = math.max(-1, math.min(2, -3 + math.sin(sys.now()) * 25.5)) * 1.5 + 0.5 ;
             }
             frame1:draw(0, 0, WIDTH, HEIGHT, 1)
             shader:deactivate()

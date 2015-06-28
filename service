@@ -16,6 +16,9 @@ udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 met = pytz.timezone("Europe/Berlin")
 
+stopID = "9001245"
+cityID = "Ulm"
+
 def efa_fetch(path):
     conn = httplib.HTTPConnection("mobile.ding.eu", 80)
     conn.request("GET", path)
@@ -116,7 +119,7 @@ def parse(data, stop):
 def get_schedule():
     departures = []
     departures.extend(parse(
-        efa_fetch("/mobile/XSLT_DM_REQUEST?outputFormat=XML&useAllStops=1&useRealtime=1&maxAssignedStops=1&itOptionsActive=1&trITMOTvalue100=5&itdLPxx_dest=&sessionID=0&language=de&locationServerActive=1&mode=direct&limit=60&itdLPxx_script=true&name_dm=9001240&type_dm=stopID&placeInfo_dm=Ulm"),
+        efa_fetch("/mobile/XSLT_DM_REQUEST?outputFormat=XML&useAllStops=1&useRealtime=1&maxAssignedStops=1&itOptionsActive=1&trITMOTvalue100=5&itdLPxx_dest=&sessionID=0&language=de&locationServerActive=1&mode=direct&limit=60&itdLPxx_script=true&name_dm=" + stopID + "&type_dm=stopID&placeInfo_dm=" + cityID),
         ""
     ))
 
