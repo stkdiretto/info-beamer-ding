@@ -1,4 +1,4 @@
-gl.setup(1124, 768)
+gl.setup(1240, 720)
 
 node.alias("departures")
 
@@ -52,7 +52,8 @@ shader = resource.create_shader[[
 function draw_departures(now, frame)
     local y = 23
     local now = unixnow()
-    font:write(0, 0, now, 30, 1,1,1,0.8)
+--    font:write(0, 0, now, 30, 1,1,1,0.8)
+--    font:write(250,600, "Jakob, nerv' nicht!", 100, 1,1,1,1)
     for idx, dep in ipairs(departures) do
 
         if (dep.date > now or dep.rdate > now) then
@@ -78,14 +79,14 @@ function draw_departures(now, frame)
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+60, 0.9)
                 font:write(120, y, dep.direction, 60, 1,1,1,1)
                 if frame == 1 then
-                    font:write(800, y, time, 60, 1,1,1,1)
+                    font:write(900, y, time, 60, 1,1,1,1)
                 else
-                    font:write(800, y, dep.nice_date, 60, 1,1,1,1)
+                    font:write(900, y, dep.nice_date, 60, 1,1,1,1)
                     if dep.realtime == "1" then
                         if dep.delay == "0" then
-                            font:write(950, y, "+" .. dep.delay, 60, 0,1,0,1)
+                            font:write(1060, y, "+" .. dep.delay, 60, 0,1,0,1)
                         else
-                            font:write(950, y, "+" .. dep.delay, 60, 1,0,0,1)
+                            font:write(1060, y, "+" .. dep.delay, 60, 1,0,0,1)
 --                             font:write(400, y, "+" .. dep.delay .. " " .. dep.rdate, 50, 1,0,0,1)
                         end
                     end
@@ -100,23 +101,23 @@ function draw_departures(now, frame)
                 util.draw_correct(_G[dep.icon], 10, y, 140, y+45, 0.9)
                 font:write(110, y, dep.direction, 45, 1,1,1,1)
                 if frame == 1 then
-                    font:write(800, y, time, 45, 1,1,1,1)
+                    font:write(900, y, time, 45, 1,1,1,1)
                 else
-                    font:write(800,y, dep.nice_date, 45, 1,1,1,1)
+                    font:write(900,y, dep.nice_date, 45, 1,1,1,1)
                     if dep.realtime == "1" then
                         if dep.delay == "0" then
-                            font:write(920,y, "+" .. dep.delay, 45, 0,1,0,1)
+                            font:write(1030,y, "+" .. dep.delay, 45, 0,1,0,1)
                         else
-                            font:write(920,y, "+" .. dep.delay, 45, 1,0,0,1)
+                            font:write(1030,y, "+" .. dep.delay, 45, 1,0,0,1)
 --                             font:write(400,y, "+" .. dep.delay .. " " .. dep.rdate, 45, 1,0,0,1)
                         end
                     end
                 end
                 y = y + 60
             end
-            if y > HEIGHT - 150 then
-                font:write(10,715, "Kliniken Wissenschaftsstadt", 60, 1,1,1,1)
-                font:write(10,660, "Anlage im Probebetrieb. Kontakt: uulm.de/?mobil", 45, 1,0.2,0.2,1)
+            if y > HEIGHT - 160 then
+                font:write(10,660, "Kliniken Wissenschaftsstadt", 60, 1,1,1,1)
+                font:write(10,610, "Anlage im Probebetrieb. Kontakt: uulm.de/?mobil", 45, 1,0.2,0.2,1)
                 break
             end
         end
