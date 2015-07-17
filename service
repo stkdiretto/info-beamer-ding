@@ -20,11 +20,15 @@ stopID = "9001245"
 cityID = "Ulm"
 
 def efa_fetch(path):
+try:
     conn = httplib.HTTPConnection("mobile.ding.eu", 80)
     conn.request("GET", path)
     res = conn.getresponse()
     data = res.read()
     return data
+except:
+    e = sys.exc_info()[0]
+    print("Error: %s" % e)
 
 def parse(data, stop):
     req = ET.fromstring(data).find('itdDepartureMonitorRequest')
