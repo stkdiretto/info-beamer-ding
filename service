@@ -21,7 +21,7 @@ cityID = "Ulm"
 
 def efa_fetch(path):
     try:
-        conn = httplib.HTTPConnection("mobile.ding.eu", 80)
+        conn = httplib.HTTPConnection("ding.eu", 80)
         conn.request("GET", path)
         res = conn.getresponse()
         data = res.read()
@@ -123,7 +123,14 @@ def parse(data, stop):
 def get_schedule():
     departures = []
     departures.extend(parse(
-        efa_fetch("/mobile/XSLT_DM_REQUEST?outputFormat=XML&useAllStops=1&useRealtime=1&maxAssignedStops=1&itOptionsActive=1&trITMOTvalue100=5&itdLPxx_dest=&sessionID=0&language=de&locationServerActive=1&mode=direct&limit=60&itdLPxx_script=true&name_dm=" + stopID + "&type_dm=stopID&placeInfo_dm=" + cityID),
+        efa_fetch("/ding3/XSLT_DM_REQUEST?" +
+		"outputFormat=XML" +
+		"&useAllStops=1" +
+		"&useRealtime=1" +
+		"&typeInfo_dm=stopID" +
+		"&nameInfo_dm=" + stopID +
+		"&deleteAssignedStops_dm=1" +
+		"&mode=direct"),
         ""
     ))
 
