@@ -16,7 +16,7 @@ udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 met = pytz.timezone("Europe/Berlin")
 
-stopID = "9001245"
+stopID = "9001002"
 cityID = "Ulm"
 
 def efa_fetch(path):
