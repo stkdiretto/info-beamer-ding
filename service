@@ -20,15 +20,11 @@ stopID = "9001245"
 cityID = "Ulm"
 
 def efa_fetch(path):
-    try:
-        conn = httplib.HTTPConnection("ding.eu", 80)
-        conn.request("GET", path)
-        res = conn.getresponse()
-        data = res.read()
-        return data
-    except:
-        e = sys.exc_info()[0]
-        print("Error: %s" % e)
+    conn = httplib.HTTPConnection("ding.eu", 80)
+    conn.request("GET", path)
+    res = conn.getresponse()
+    data = res.read()
+    return data
 
 def parse(data, stop):
     req = ET.fromstring(data).find('itdDepartureMonitorRequest')
@@ -131,7 +127,7 @@ def get_schedule():
 		"&nameInfo_dm=" + stopID +
 		"&deleteAssignedStops_dm=1" +
 		"&mode=direct"),
-        ""
+          ""
     ))
 
     departures.sort()
@@ -203,7 +199,11 @@ def main():
     time.sleep(5)
     send_clock()
     while 1:
-        update()
+        try:
+           update()
+        except Exception, exc:
+           print >>sys.stderr, "Error: ", exc
+
         for i in xrange(6):
             time.sleep(30)
             send_clock()
