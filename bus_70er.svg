@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="214.28572"
+   height="214.28572"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="bus.svg"
+   inkscape:export-filename="/home/stk/datalove/info-beamer-ding/stadtbus9.png"
+   inkscape:export-xdpi="180"
+   inkscape:export-ydpi="180">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="132.70592"
+     inkscape:cy="65.129765"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="713"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-197.14285,-329.50503)">
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:none"
+       id="path2985"
+       sodipodi:cx="304.28571"
+       sodipodi:cy="436.64789"
+       sodipodi:rx="107.14286"
+       sodipodi:ry="107.14286"
+       d="m 411.42857,436.64789 c 0,59.17337 -47.9695,107.14286 -107.14286,107.14286 -59.17337,0 -107.14286,-47.96949 -107.14286,-107.14286 0,-59.17337 47.96949,-107.14286 107.14286,-107.14286 59.17336,0 107.14286,47.96949 107.14286,107.14286 z" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3755"
+       style="font-size:14px;font-style:italic;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Raleway;-inkscape-font-specification:Raleway Medium Italic"
+       transform="translate(327.45253,332.53548)"><flowRegion
+         id="flowRegion3757"><rect
+           id="rect3759"
+           width="305.06607"
+           height="262.63968"
+           x="-107.07617"
+           y="-1.8869239" /></flowRegion><flowPara
+         id="flowPara3761"
+         style="font-size:180px;font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;font-family:Fira Sans;-inkscape-font-specification:Fira Sans Ultra-Bold">71</flowPara></flowRoot>  </g>
+</svg>
