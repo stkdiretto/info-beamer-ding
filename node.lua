@@ -1,4 +1,4 @@
-gl.setup(1240, 720)
+gl.setup(1240, 740)
 
 node.alias("departures")
 
@@ -116,8 +116,8 @@ function draw_departures(now, frame)
                 y = y + 60
             end
             if y > HEIGHT - 160 then
-                font:write(10,660, "Kliniken Wissenschaftsstadt", 60, 1,1,1,1)
-                font:write(10,610, "Anlage im Probebetrieb. Kontakt: uulm.de/?mobil", 45, 1,0.2,0.2,1)
+                local t = os.date("*t")
+                font:write(10,660, t.hour .. ":" .. t.min .. "  Haltestelle Rathaus Ulm", 60, 1,1,1,1)
                 break
             end
         end
